@@ -3,9 +3,21 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <link rel="stylesheet" href="style.css">
+  <title>Rock Paper Scissors</title>
 </head>
 <body> 
-  <script src="script.js"></script>
+  <div id="container">
+    <h3>Pick! </h3>
+    <button onclick="playRound('Rock', getComputerChoice()); Update()">Rock</button>
+    <button onclick="playRound('Paper', getComputerChoice()); Update()">Paper</button>
+    <button onclick="playRound('Scissors', getComputerChoice()); Update()">Scissors</button>
+    <p id="compChoice">Computer Choice: </p>
+    <hr>
+    <p id="humanScore">Your Score: </p>
+    <p id="compScore">Computer Score: </p>
+    <p id="winner"> </p>
+    <script src="script.js"></script>
+  </div>
 </body>
 </html>

@@ -1,76 +1,55 @@
 function getComputerChoice(){
   let probability = Math.random();
-  console.log(probability)
   if(probability < 1/3) {
-    return "rock"
+    return "Rock"
   } else if (probability < 2/3 && probability >= 1/3) {
-    return "paper"
+    return "Paper"
   } else {
-    return "scissors"
+    return "Scissors"
   }
 }
 
-function getHumanChoice(){
-  const choice = prompt("1: Rock \n2: Paper \n3: Scissor \n Pick a number");
-  if( choice == 1) {
-    return "rock"
-  } else if ( choice == 2) {
-    return "paper"
-  } else if (choice == 3) { 
-    return "scissors"
-  } else { 
-    alert("Check your input")
-    return "no choice"
-  }
-}
 
 function playRound(humanChoice, computerChoice){
-    if(humanChoice == "rock" && computerChoice == "scissors"){
-      alert("You've won! Rock beats scissors")
-      return 1;
-    } else if (humanChoice == "scissors" && computerChoice == "paper") { 
-      alert("You've won! Scissors beats paper")
-      return 1;
-    } else if (humanChoice == "paper" && computerChoice == "rock") {
-      alert("You've won! Paper beats rock")
-      return 1;
+      if(humanScore == 5 || cmpScore == 5 ) {
+      return "Ended";
+    }
+    webCompChoice.innerHTML = `Computer Choice: ${computerChoice}`
+
+    if(humanChoice == "Rock" && computerChoice == "Scissors"){
+      alert("You've won! Rock beats Scissors")
+      humanScore += 1;
+    } else if (humanChoice == "Scissors" && computerChoice == "Paper") { 
+      alert("You've won! Scissors beats Paper")
+      humanScore += 1;
+    } else if (humanChoice == "Paper" && computerChoice == "Rock") {
+      alert("You've won! Paper beats Rock")
+      humanScore += 1;
     } else if (humanChoice == computerChoice) { 
       alert("It's a draw")
-      return null;
     } else {
       alert(`You've lost, ${computerChoice} beats ${humanChoice}`)
-      return 0;
+      cmpScore += 1 ;
     }
 }
+// ----------------------------------- // 
 
+const webHumanScore = document.getElementById("humanScore");
+const webCompScore = document.getElementById("compScore");
+const webCompChoice = document.getElementById("compChoice");
+const winner = document.getElementById("winner"); 
 
+let cmpScore = 0;
+let humanScore = 0;
 
-
-function playGame(){
-  var humanScore = 0;
-  var computerScore = 0;
-
-  for(let i = 0;i < 5;i++) { 
-    const humanSelection = getHumanChoice();
-    const computerSelection = getComputerChoice();
-    const round = playRound(humanSelection,computerSelection)
-    if ( round == 0 ) { 
-      computerScore +=1;
-    } else if (round == 1) { 
-      humanScore += 1;
-    } else {
-      computerScore +=1;
-      humanScore += 1;
-    }
-  }
-
-  if (humanScore > computerScore) {
-    alert("You've won in the game!! ")
-  } else if ( computerScore > humanScore) { 
-    alert("You've lost in the game :(")
-  } else {
-    alert("No one won, it's a draw ")
+function Update() { 
+  webCompScore.innerHTML = `Computer Score: ${cmpScore}`;
+  webHumanScore.innerHTML= `Your Score: ${humanScore}`;
+  if (humanScore == 5 ){
+    winner.innerHTML = "You're the winner!";
+  } else if(cmpScore == 5) { 
+    winner.innerHTML = "You've Lost";
   }
 }
 
-playGame()
+

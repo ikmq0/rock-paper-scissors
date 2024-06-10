@@ -1,0 +1,30 @@
+*  {
+  font-family: 'Courier New', Courier, monospace;
+}
+
+body { 
+  text-align: center;
+}
+
+button { 
+  border: 1px solid gray;
+  background-color: whitesmoke;
+  margin: 5px auto;
+  padding: 5px;
+  font-size: large;
+  border-radius: 5px; 
+}
+
+#container {
+  text-align: center;
+  border: 1px solid gray;
+  border-radius: 10px;
+  width: 50%;
+  margin: auto;
+
+  background-color: snow;
+}
+
+button:hover { 
+  background-color: rgb(200, 200, 216);
+}
